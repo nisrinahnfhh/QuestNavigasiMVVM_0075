@@ -1,6 +1,5 @@
 package com.example.pertemuan6.view
 
-import android.widget.Button
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -11,12 +10,6 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
 import androidx.compose.material3.Button
-import androidx.compose.runtime.Composable
-import androidx.compose.ui.Alignment
-import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.res.colorResource
-import androidx.compose.ui.unit.dp
 import androidx.compose.material3.DividerDefaults.Thickness
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.HorizontalDivider
@@ -26,7 +19,13 @@ import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.material3.TopAppBar
 import androidx.compose.material3.TopAppBarDefaults
+import androidx.compose.runtime.Composable
+import androidx.compose.ui.Alignment
+import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.unit.dp
 import com.example.pertemuan6.R
 
 @OptIn(ExperimentalMaterial3Api::class)
@@ -75,29 +74,28 @@ fun FormIsian(
                         )
                         Text(text=item)
                     }
-                    HorizontalDivider(modifier = Modifier
-                        .padding(all = 20.dp)
-                        .width(250.dp),
-                        thickness = 1.dp,
-                        color = Color.Red
-                    )
-                    OutlinedTextField(
-                        value = "",
-                        singleLine = true,
-                        modifier = Modifier
-                            .width(250.dp),
-                        label = {Text(text = "Alamat")},
-                        onValueChange = {},
-                    )
-                    Spacer(modifier = Modifier.height(30.dp))
-                    Button(
-                        modifier = Modifier.fillMaxWidth(fraction = 1f)
-                            .padding(all = 25.dp),
-                        onClick = OnSubmitBtnClick
-                    ) {
-                        Text(stringResource(id = R.string.submit))
-                    }
                 }
+            }
+            HorizontalDivider(modifier = Modifier
+                .padding(20.dp)
+                .width(250.dp),
+                thickness = 1.dp, color = Color.Red
+            )
+            OutlinedTextField(
+                value = "",
+                singleLine = true,
+                modifier = Modifier
+                    .width(250.dp),
+                label = { Text(text = "Alamat") },
+                onValueChange = {},
+            )
+            Spacer(modifier = Modifier.height(30.dp))
+            Button(
+                modifier = Modifier.fillMaxWidth(1f)
+                    .padding(all = 25.dp),
+                onClick = OnSubmitBtnClick
+            ) {
+                Text(stringResource(id = R.string.submit))
             }
         }
     }

@@ -1,4 +1,6 @@
 package com.example.pertemuan6.view
+
+import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Scaffold
 import androidx.compose.runtime.Composable
@@ -14,26 +16,30 @@ enum class Navigasi {
 }
 
 @Composable
-fun DataApp(
-    navController: NavHostController = rememberNavController()
-){
-    Scaffold { isiRuang ->
+fun DataApp() {
+    val navController: NavHostController = rememberNavController()
+
+    Scaffold(
+        modifier = Modifier.fillMaxSize()
+    ) { isiRuang ->
         NavHost(
             navController = navController,
             startDestination = Navigasi.FormulirSaya.name,
             modifier = Modifier.padding(paddingValues = isiRuang)
-        ){
-            composable(route = Navigasi.FormulirSaya.name){
-                FormIsian (
-                    //pilihanJK = JenisK.map { id -> konteks.resources.getString(id) },
+        ) {
+            composable(route = Navigasi.FormulirSaya.name) {
+                FormIsian(
                     OnSubmitBtnClick = {
                         navController.navigate(route = Navigasi.Detail.name)
                     }
                 )
             }
-            composable(route = Navigasi.Detail.name){
+
+            composable(route = Navigasi.Detail.name) {
                 TampilData(
-                    onBackBtnClick = {cancelAndBackToFormulirSaya(navController)}
+                    onBackBtnClick = {
+                        cancelAndBackToFormulirSaya(navController)
+                    }
                 )
             }
         }
